@@ -1,0 +1,89 @@
+<style>
+	body.internal_body {
+		background-color: #fff;
+	}
+	
+	/*fascia logo + lingue + help */
+	div.row.header {
+	    padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+	}
+	
+	/* Logo in alto a sinistra */
+	div.row.header img
+	{
+		max-height: 75px;
+	}
+	
+	/* Lingue in alto a sinistra */
+	.languages {
+		padding-top: 25px;
+	}
+	
+	/* fascia rossa in cima*/
+	.separatorTop
+	{
+		height: 50px;
+		min-height: 50px;
+		background-color: #a41b22;
+	}
+	
+	/* Immagine grande centrale*/
+	#infoBox {
+		background-image: url("/File/EduPath/Login/main.jpg");
+		background-repeat: no-repeat;
+		background-size: contain;
+		background-position: left;
+		min-height: 650px;
+	}
+	
+	/*Primo logo*/
+	.login .toplogo img
+	{
+		max-height: 80px;
+	}
+	
+	/*altri loghi*/
+	.login .logos img
+	{
+		display: block;
+		margin: 0 auto;
+		max-height: 75px;
+		width: 100%;
+	}
+	
+	.login .imgContainer .box {
+	    display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+		height: 75px;
+	}
+	
+	.login .container {
+		display: inline-block;
+		margin: 30px;
+	}
+	
+	/*Spaziature loghi*/
+	.login .toplogo
+	{
+		margin-top: 1.5rem;
+		margin-bottom: 1.5rem;
+	}
+	
+	.login .logos
+	{
+		margin-bottom: 1.5rem;
+	}
+	
+	.row {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	
+	#contentContainer .loginbutton
+	{
+		background-color: #a41b22;
+		border-color: #7F151C;
+	}
+</style>

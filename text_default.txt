@@ -1,0 +1,208 @@
+<style>
+.custom
+ {
+    width: 275px;
+}
+</style>
+
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-9">
+        <div class="row">
+	
+	<!-- ##################### CALENDARIO DELLE ATTIVITA' #########################	-->	
+    <a href="/modules/communitydiary/ComDiaryTile.aspx" class="btn btn-secondary custom m-1 pt-4 edt_link">
+       <h5>Videoconferenza</h5>
+      <p><i class="fa fa-calendar-alt fa-3x"></i></p>
+      <p></p><small class="text-muted">Accedi alle lezioni</small></p>
+	</a>
+	
+		<!-- ##################### PERCORSO FORMATIVO #########################################	-->
+    <a href="/Modules/EduPath/EduPathList.aspx?ViewMode=1" class="btn btn-secondary custom m-1 pt-4 edt_link">
+       <h5>E-learning</h5>
+      <p><i class="fa fa-graduation-cap fa-3x"></i></p>
+      <p></p><small class="text-muted">Accedi ai tuoi corsi</small></p>
+    </a>
+	
+	<!-- ##################### MATERIALI #########################################	-->	
+    <a href="/Modules/Repository/List.aspx" class="btn btn-secondary custom m-1 pt-4 edt_container edt_link">
+       <h5>Materiali</h5>
+      <p><i class="fa fa-folder-open fa-3x"></i></p>
+      <p></p><small class="text-muted">Accedi ai tuoi materiali</small></p>
+    </a>
+	
+	<!-- ##################### QUESTIONARI ######################################### -->
+    <a href="/questionari/QuestionariList.aspx?type=0" class="btn btn-secondary custom m-1 pt-4 edt_link">
+       <h5>Questionari</h5>
+      <p><i class="fa fa-tasks fa-3x"></i></p>
+      <p></p><small class="text-muted">Accedi ai tuoi questionari</small></p>
+    </a>
+	
+		<!-- ##################### BACHECA SOCIAL ######################################### -->
+    <a href="/ModulesForApi/bachecasocial/bachecasocial.aspx" class="btn btn-secondary custom m-1 pt-4 edt_link">
+       <h5>Bacheca Social</h5>
+      <p><i class="fa fa-chalkboard fa-3x"></i></p>
+      <p></p><small class="text-muted">Accedi alla Bacheca</small></p>
+    </a>
+	
+		<!-- ##################### FORUM ######################################### -->
+    <a href="/forum/forums.aspx" class="btn btn-secondary custom m-1 pt-4 edt_link">
+       <h5>Forum</h5>
+      <p><i class="fas fa-landmark fa-3x"></i></p>
+      <p></p><small class="text-muted">Accedi ai Forum</small></p>
+    </a>	
+	
+
+  </div>
+  				<div class="pt-3">
+					<iframe class="noticeboardiframe" src="/Modules/Noticeboard/DisplayMessage.aspx" width="100%" height="250px" frameborder="0"></iframe>
+				</div>
+  
+  
+ </div>
+    <div class="col-sm-3">
+		<div class="list-group">
+			<a href="/Modules/DashBoard/CommunityInfo.aspx" class="list-group-item list-group-item-action edt_link"><i class="fa fa-info-circle fa-1x"> </i> Info sul corso</a>
+			<a href="/modules/faq/faqlist.aspx" class="list-group-item list-group-item-action edt_link d-none"><i class="fa fa-question-circle fa-1x"> </i> Help</a>		
+			<a href="/modules/faq/faqlist.aspx" class="list-group-item list-group-item-action edt_link"><i class="fa fa-life-ring fa-1x"> </i> F.A.Q.</a>
+			<a href="/modules/glossary/List.aspx" class="list-group-item list-group-item-action edt_link"><i class="fab fa-adversal fa-1x"> </i> Glossario</a>
+		</div>
+    </div>
+  </div>
+</div>
+
+
+	 <script type="text/javascript">
+	
+		//Imposta visibilità anchor secondo la classe
+		function edt_setByCssClass(CssClass)
+		{
+			var elements = document.getElementsByClassName(CssClass);
+			for (var i = 0; i < elements.length; i++) {
+				edt_setElement(elements.item(i));
+			}
+		}
+		
+		//Interna: imposta visibilità di un elemento (anchor) specifico.
+		function edt_setElement(element) {
+			element.style.display = "none";
+			var url = element.href;
+			var nodes = document.getElementById("nav-main").getElementsByTagName("a");
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes.item(i).href.endsWith(url)) {					
+					element.style.display = "";
+                }
+            }
+        }
+		
+		//OLD: imposta il contenitore. Classe contenitore: edt_container, classe elemento padre: edt_main
+		function edt_SetContainers()
+		{
+			var containerClass = "edt_container";
+			var mainItemClass = "edt_main";
+			
+			var containers = document.getElementsByClassName(containerClass);
+			
+			for (var i = 0; i < containers.length; i++) {
+				containers.item(i).style.display = "none";
+				
+				try {
+					mainElement = containers.item(i).getElementsByClassName(mainItemClass).item(0);
+					if(edt_CheckUrl(mainElement.href))
+					{
+						containers.item(i).style.display = "";
+					}
+				} catch(err){
+				}				
+			}
+		}
+		
+		//NEW: bootstrap (contenitore è il link)
+		//Imposta il contenitore. Classe contenitore: edt_container, classe elemento padre: edt_main
+		function edt_SetContainersBootStrap()
+		{
+			var linkClass = "edt_link";
+			
+			var containers = document.getElementsByClassName(linkClass);
+			
+			for (var i = 0; i < containers.length; i++) {
+				containers.item(i).style.display = "none";
+				
+				try {
+					mainElement = containers.item(i);
+					if(edt_CheckUrl(mainElement.href))
+					{
+						containers.item(i).style.display = "";
+					}
+				} catch(err){
+				}				
+			}
+		}
+		
+		//Verifica se l'url è presente nei menu
+		function edt_CheckUrl(url)
+		{
+			var nodes = document.getElementById("nav-main").getElementsByTagName("a");
+            for (var j = 0; j < nodes.length; j++) {
+                <!-- if (nodes.item(j).href == url) { -->
+				if (nodes.item(j).href.endsWith(url)) {
+					return true;
+                }
+            }
+			return false;
+		}
+		
+		function edt_setNoticeboard()
+		{
+			var url_frameNoticeboard = "/Modules/Noticeboard/DisplayMessage.aspx?idCommunity=";
+			var url_infoNoticeboard = "/Modules/Noticeboard/NoticeboardDashboard.aspx?lfp=false";
+		
+			var homelink = document.getElementById("nav-main").getElementsByClassName("communitydefaultview").item(0).getElementsByTagName("a");
+			
+			if(edt_CheckUrl(url_infoNoticeboard))
+			{
+				
+				var comitem = homelink.item(0);
+				document.getElementById("edt_noticeboard").src = url_frameNoticeboard + comitem.href.split("=")[1];
+			} else {
+				
+				document.getElementById("edt_noticeboardContainer").style.display = "none";
+			}
+		}
+		
+		function edt_socialnoticeboardContainer()
+		{
+			var url_infoNoticeboard = "/ModulesForApi/bachecasocial/bachecasocial.aspx";	
+			
+			if(edt_CheckUrl(url_infoNoticeboard))
+			{
+				document.getElementById("edt_socialnoticeboardContainer").style.display = "block";
+			} else {
+				
+				document.getElementById("edt_socialnoticeboardContainer").style.display = "none";
+			}
+		}
+		
+		//Main: lancia le altre funzioni.
+		function edt_main()
+		{
+			edt_SetContainers();
+			edt_SetContainersBootStrap();
+			
+			edt_setByCssClass("edt_admin");
+			
+			edt_setNoticeboard();
+			edt_socialnoticeboardContainer()
+		}
+		
+		edt_main();
+		
+	</script>
+
+
+
+
+
